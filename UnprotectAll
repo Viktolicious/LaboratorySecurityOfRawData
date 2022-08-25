@@ -1,0 +1,12 @@
+Sub UnProtectAll()
+' Created by Viktor Elofsson 220602 for Immuneed AB
+
+      ' Loop through all sheets in the workbook
+
+      For i = 1 To Sheets.Count
+
+         Sheets(i).UnProtect
+
+      Next i
+
+End Sub
