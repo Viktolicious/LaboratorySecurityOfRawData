@@ -1,5 +1,5 @@
 Sub UnProtectAll()
-' Created by Viktor Elofsson 220602 for Immuneed AB
+'Updated by Viktor Elofsson - Laboratory Engineer 220602
 
       ' Loop through all sheets in the workbook
 
