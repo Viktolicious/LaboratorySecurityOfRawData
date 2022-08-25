@@ -1,0 +1,29 @@
+Sub ProtectEntireFoldersSheets()
+    Const myPassword = "imn"
+    Dim sh As Worksheet
+    Dim wBk As Workbook
+    Dim sFileSpec As String
+    Dim sPathSpec As String
+    Dim sFoundFile As String
+
+    sPathSpec = Environ("USERPROFILE") & "\Desktop\Protect\"
+    sFileSpec = "*.xlsx"
+    sFoundFile = Dir(sPathSpec & sFileSpec)
+    Application.DisplayAlerts = False
+    Do Until sFoundFile = ""
+        Set wBk = Workbooks.Open(sPathSpec & sFoundFile)
+        If Not wBk Is Nothing Then
+            With wBk
+                For Each sh In .Worksheets
+                    sh.Protect Password:=myPassword, AllowInsertingRows:=True, AllowDeletingRows:=True, AllowSorting:=True, AllowFiltering:=True
+                Next sh
+                .Save
+                Debug.Print "Saved: " & .FullName
+                .Close
+            End With
+            Set wBk = Nothing
+        End If
+        sFoundFile = Dir
+    Loop
+    Application.DisplayAlerts = True
+End Sub
