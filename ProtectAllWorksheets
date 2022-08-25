@@ -1,0 +1,8 @@
+Sub ProtectAllWorksheets()
+    Dim ws As Worksheet
+    Dim Pwd As String
+    Pwd = InputBox("Enter your password to protect all worksheets", "Protect Worksheets")
+    For Each ws In ActiveWorkbook.Worksheets
+        ws.Protect Password:=Pwd
+    Next ws
+End Sub
